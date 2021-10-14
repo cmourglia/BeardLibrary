@@ -93,7 +93,14 @@ public:
 	T&       Last() { return m_Array.back(); }
 	const T& Last() const { return m_Array.back(); }
 
-	void Pop() { m_Array.pop_back(); }
+	[[nodiscard]] T Pop()
+	{
+		T last = Last();
+		m_Array.pop_back();
+		return last;
+	}
+
+	void PopAndDiscard() { m_Array.pop_back(); }
 
 private:
 	std::vector<T> m_Array;
