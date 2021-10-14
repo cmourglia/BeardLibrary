@@ -6,10 +6,10 @@ AlignConsecutiveAssignments: 'true'
 AlignConsecutiveDeclarations: 'true'
 AlignOperands: 'true'
 AlignTrailingComments: 'true'
-AllowShortBlocksOnASingleLine: 'false'
-AllowShortCaseLabelsOnASingleLine: 'false'
-AllowShortFunctionsOnASingleLine: Empty
-AllowShortIfStatementsOnASingleLine: 'false'
+AllowShortBlocksOnASingleLine: 'true'
+AllowShortCaseLabelsOnASingleLine: 'true'
+AllowShortFunctionsOnASingleLine: 'true'
+AllowShortIfStatementsOnASingleLine: 'true'
 AllowShortLoopsOnASingleLine: 'false'
 AlwaysBreakAfterReturnType: None
 AlwaysBreakTemplateDeclarations: 'true'
@@ -24,7 +24,7 @@ Language: Cpp
 MaxEmptyLinesToKeep: '1'
 NamespaceIndentation: Inner
 PointerAlignment: Left
-SortIncludes: 'false'
+SortIncludes: 'true'
 SpaceBeforeAssignmentOperators: 'true'
 SpaceBeforeParens: Never
 SpaceInEmptyParentheses: 'false'

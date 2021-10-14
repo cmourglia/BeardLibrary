@@ -1,0 +1,14 @@
+{
+    "editor.formatOnSave": true,
+    "files.associations": {
+        "chrono": "cpp",
+        "numbers": "cpp"
+    },
+    "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
+    "clang-tidy.buildPath": "build",
+    "clang-tidy.compilerArgs": [
+        "-Wno-pragma-once-outside-header",
+        "-Wno-c++17-compat",
+        "-Wno-c++17-extensions"
+    ],
+}
