@@ -5,6 +5,13 @@ option(BEARD_BUILD_TESTS "Build tests" ON)
 
 set(CMAKE_CXX_STANDARD 20)
 
+add_subdirectory(thirdparty/glm)
+add_library(stb_image STATIC thirdparty/stb_units/stb_image.c)
+target_include_directories(stb_image PUBLIC thirdparty/stb)
+target_compile_definitions(stb_image PRIVATE $<$<CXX_COMPILER_ID:MSVC>:_CRT_SECURE_NO_WARNINGS>)
+add_library(stb_truetype STATIC thirdparty/stb_units/stb_truetype.c)
+target_include_directories(stb_truetype PUBLIC thirdparty/stb)
+
 add_library(${PROJECT_NAME} STATIC
     src/Timer.cpp
     src/IO.cpp
@@ -19,7 +26,7 @@ add_library(${PROJECT_NAME} STATIC
 )
 
 target_include_directories(${PROJECT_NAME} PUBLIC include)
-target_compile_definitions(${PROJECT_NAME} PUBLIC
+target_compile_definitions(${PROJECT_NAME} PRIVATE
     $<$<CXX_COMPILER_ID:MSVC>:_CRT_SECURE_NO_WARNINGS>
     $<$<CXX_COMPILER_ID:MSVC>:NOMINMAX>
 )
