@@ -8,7 +8,7 @@ END_EXTERNAL_INCLUDE
 #	error TODO
 #endif
 
-namespace FileUtils
+namespace Beard::IO
 {
 i64 GetFileWriteTime(const char* filename)
 {
@@ -95,7 +95,7 @@ std::string ReadWholeFile(const char* filename)
 	return result;
 }
 
-std::optional<std::string> ReadFileIfNewer(const char* filename, i64 lastWrite, i64* newLastWrite)
+std::optional<std::string> ReadWholeFileIfNewer(const char* filename, i64 lastWrite, i64* newLastWrite)
 {
 	std::optional<std::string> result;
 

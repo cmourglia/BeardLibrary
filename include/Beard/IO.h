@@ -6,15 +6,11 @@
 #include <optional>
 #include <string>
 
-namespace Beard
+namespace Beard::IO
 {
-namespace IO
-{
-	i64 GetFileWriteTime(const char* filename);
+i64 GetFileWriteTime(const char* filename);
 
-	std::string ReadWholeFile(const char* filename);
+std::string ReadWholeFile(const char* filename);
 
-	std::optional<std::string> ReadWholeFileIfNewer(const char* filename, i64 last_write, i64* write_time);
-
-}
+std::optional<std::string> ReadWholeFileIfNewer(const char* filename, i64 last_write, i64* write_time);
 }
