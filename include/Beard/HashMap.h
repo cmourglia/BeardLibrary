@@ -64,6 +64,9 @@ public:
 	ConstIterator Find(const Key& key) const { return m_HashMap.find(key); }
 	ConstIterator Find(Key&& key) const { return m_HashMap.find(key); }
 
+	bool Contains(const Key& key) const { return m_HashMap.contains(key); }
+	bool Contains(Key&& key) const { return m_HashMap.contains(key); }
+
 private:
 	std::unordered_map<Key, Value> m_HashMap;
 };
