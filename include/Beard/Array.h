@@ -41,6 +41,8 @@ public:
 
 	i32 ElementCount() const { return static_cast<i32>(m_Array.size()); }
 
+	i32 DataSize() const { return ElementCount() * sizeof(T); }
+
 	bool IsEmpty() const { return m_Array.empty(); }
 
 	const T& Get(const i32 index) const { return m_Array.at(index); }
