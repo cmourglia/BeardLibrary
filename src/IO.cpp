@@ -27,7 +27,7 @@ i64 GetFileWriteTime(const char* filename)
 	{
 		DWORD error = GetLastError();
 
-		if (error != ERROR_SHARING_VIOLATION) { ASSERT(false, "File error %d", error); }
+		if (error != ERROR_SHARING_VIOLATION) { ASSERT(false, "File error %d\n", error); }
 
 		return 0;
 	}
@@ -38,7 +38,7 @@ i64 GetFileWriteTime(const char* filename)
 	if (!ok)
 	{
 		DWORD error = GetLastError();
-		ASSERT(false, "File error %d", error);
+		ASSERT(false, "File error %d\n", error);
 
 		return 0;
 	}
@@ -67,7 +67,7 @@ std::string ReadWholeFile(const char* filename)
 	{
 		DWORD error = GetLastError();
 
-		if (error != ERROR_SHARING_VIOLATION) { ASSERT(false, "File error %d", error); }
+		if (error != ERROR_SHARING_VIOLATION) { ASSERT(false, "File error %d\n", error); }
 
 		return result;
 	}
@@ -78,7 +78,7 @@ std::string ReadWholeFile(const char* filename)
 	if (!ok)
 	{
 		DWORD error = GetLastError();
-		ASSERT(false, "File error %d", error);
+		ASSERT(false, "File error %d\n", error);
 
 		return result;
 	}
@@ -114,7 +114,7 @@ std::optional<std::string> ReadWholeFileIfNewer(const char* filename, i64 lastWr
 	{
 		DWORD error = GetLastError();
 
-		if (error != ERROR_SHARING_VIOLATION) { ASSERT(false, "File error %d", error); }
+		if (error != ERROR_SHARING_VIOLATION) { ASSERT(false, "File error %d\n", error); }
 
 		return result;
 	}
@@ -126,7 +126,7 @@ std::optional<std::string> ReadWholeFileIfNewer(const char* filename, i64 lastWr
 	if (!ok)
 	{
 		DWORD error = GetLastError();
-		ASSERT(false, "File error %d", error);
+		ASSERT(false, "File error %d\n", error);
 
 		return result;
 	}
@@ -138,7 +138,7 @@ std::optional<std::string> ReadWholeFileIfNewer(const char* filename, i64 lastWr
 	if (!ok)
 	{
 		DWORD error = GetLastError();
-		ASSERT(false, "File error %d", error);
+		ASSERT(false, "File error %d\n", error);
 
 		return result;
 	}
@@ -158,7 +158,7 @@ std::optional<std::string> ReadWholeFileIfNewer(const char* filename, i64 lastWr
 	if (!ok)
 	{
 		DWORD error = GetLastError();
-		ASSERT(false, "File error %d", error);
+		ASSERT(false, "File error %d\n", error);
 
 		return result;
 	}
