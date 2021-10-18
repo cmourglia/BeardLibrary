@@ -79,6 +79,12 @@
 
 #define ARRAY_SIZE(x) (sizeof(x) / sizeof(x[0]))
 
+#define BEARD_STRINGIFY(x) #x
+#define BEARD_TOSTRING(x) BEARD_STRINGIFY(x)
+#define BEARD_AT __FILE__ ":" BEARD_TOSTRING(__LINE__)
+
+#define BEARD_TODO(...) __pragma(message("TODO at " BEARD_AT " -> " __VA_ARGS__))
+
 // Types
 using i8  = int8_t;
 using i16 = int16_t;
