@@ -2,6 +2,7 @@
 
 #include <Beard/Macros.h>
 
+#include <initializer_list>
 #include <unordered_map>
 
 namespace Beard
@@ -12,13 +13,18 @@ template <typename Key, typename Value>
 class HashMap
 {
 public:
+	using Iterator      = typename std::unordered_map<Key, Value>::iterator;
+	using ConstIterator = typename std::unordered_map<Key, Value>::const_iterator;
+	using ValueType     = typename std::pair<const Key, Value>;
+
 	DEFAULT_CTORS(HashMap);
 
 	HashMap()  = default;
 	~HashMap() = default;
-
-	using Iterator      = typename std::unordered_map<Key, Value>::iterator;
-	using ConstIterator = typename std::unordered_map<Key, Value>::const_iterator;
+	HashMap(std::initializer_list<ValueType> init)
+	    : m_HashMap{std::move(init)}
+	{
+	}
 
 	Iterator      begin() { return m_HashMap.begin(); }
 	ConstIterator begin() const { return m_HashMap.begin(); }
@@ -74,5 +80,13 @@ private:
 template <typename Value>
 class StringHashMap : public HashMap<std::string, Value>
 {
+public:
+	using ValueType = typename std::pair<const std::string, Value>;
+
+	StringHashMap() = default;
+	StringHashMap(std::initializer_list<ValueType> init)
+	    : HashMap<std::string, Value>{std::move(init)}
+	{
+	}
 };
 }

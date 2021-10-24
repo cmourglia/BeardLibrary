@@ -89,6 +89,10 @@ public:
 		m_Array.insert(m_Array.end(), other.m_Array.begin(), other.m_Array.end());
 	}
 
+	// FIXME: Return iterator ?
+	void RemoveRange(const ConstIterator& begin, const ConstIterator& end) { m_Array.erase(begin, end); }
+	void Remove(const ConstIterator& element) { m_Array.erase(element); }
+
 	T&       First() { return m_Array.front(); }
 	const T& First() const { return m_Array.front(); }
 
