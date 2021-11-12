@@ -211,5 +211,5 @@ PrivDefer<Fn> DeferFunc(Fn fn) { return PrivDefer<Fn>(fn); }
 #define DEFER_1(x, y) x##y
 #define DEFER_2(x, y) DEFER_1(x, y)
 #define DEFER_3(x) DEFER_2(x, __COUNTER__)
-#define Defer(code) auto DEFER_3(_defer_) = Priv::DeferFunc([&]() { code; })
+#define defer(code) auto DEFER_3(_defer_) = Priv::DeferFunc([&]() { code; })
 // clang-format on

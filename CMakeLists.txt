@@ -1,4 +1,4 @@
-project(BeardLibrary)
+project(beardLibrary)
 cmake_minimum_required(VERSION 3.20)
 
 option(BEARD_BUILD_TESTS "Build tests" ON)
@@ -13,16 +13,16 @@ add_library(stb_truetype STATIC thirdparty/stb_units/stb_truetype.c)
 target_include_directories(stb_truetype PUBLIC thirdparty/stb)
 
 add_library(${PROJECT_NAME} STATIC
-    src/Timer.cpp
-    src/IO.cpp
+        src/timer.cpp
+        src/io.cpp
 
-    include/Beard/Macros.h
+        include/beard/core/macros.h
 
-    include/Beard/Array.h
-    include/Beard/Hash.h
-    include/Beard/HashMap.h
-    include/Beard/IO.h
-    include/Beard/Timer.h
+        include/beard/containers/array.h
+        include/beard/misc/hash.h
+        include/beard/containers/hash_map.h
+        include/beard/io/io.h
+        include/beard/misc/timer.h
 )
 
 target_include_directories(${PROJECT_NAME} PUBLIC include)

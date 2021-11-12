@@ -1,4 +1,4 @@
-#include <Beard/IO.h>
+#include <beard/io/io.h>
 
 #if BEARD_PLATFORM_WINDOWS
 START_EXTERNAL_INCLUDE
@@ -8,9 +8,9 @@ END_EXTERNAL_INCLUDE
 #	error TODO
 #endif
 
-namespace Beard::IO
+namespace beard::io
 {
-i64 GetFileWriteTime(const char* filename)
+i64 get_file_write_time(const char* filename)
 {
 #if BEARD_PLATFORM_WINDOWS
 	HANDLE fileHandle = CreateFileA(filename,
@@ -21,7 +21,7 @@ i64 GetFileWriteTime(const char* filename)
 	                                FILE_ATTRIBUTE_NORMAL,
 	                                nullptr);
 
-	Defer(CloseHandle(fileHandle));
+	defer(CloseHandle(fileHandle));
 
 	if (fileHandle == INVALID_HANDLE_VALUE)
 	{
@@ -49,7 +49,7 @@ i64 GetFileWriteTime(const char* filename)
 #endif
 }
 
-std::string ReadWholeFile(const char* filename)
+std::string read_whole_file(const char* filename)
 {
 	std::string result;
 #if BEARD_PLATFORM_WINDOWS
@@ -61,7 +61,7 @@ std::string ReadWholeFile(const char* filename)
 	                                FILE_ATTRIBUTE_NORMAL,
 	                                nullptr);
 
-	Defer(CloseHandle(fileHandle));
+	defer(CloseHandle(fileHandle));
 
 	if (fileHandle == INVALID_HANDLE_VALUE)
 	{
@@ -95,7 +95,7 @@ std::string ReadWholeFile(const char* filename)
 	return result;
 }
 
-std::optional<std::string> ReadWholeFileIfNewer(const char* filename, i64 lastWrite, i64* newLastWrite)
+std::optional<std::string> read_while_file_if_newer(const char* filename, i64 lastWrite, i64* newLastWrite)
 {
 	std::optional<std::string> result;
 
@@ -108,7 +108,7 @@ std::optional<std::string> ReadWholeFileIfNewer(const char* filename, i64 lastWr
 	                                FILE_ATTRIBUTE_NORMAL,
 	                                nullptr);
 
-	Defer(CloseHandle(fileHandle));
+	defer(CloseHandle(fileHandle));
 
 	if (fileHandle == INVALID_HANDLE_VALUE)
 	{

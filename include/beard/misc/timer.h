@@ -1,34 +1,34 @@
 #pragma once
 
-#include <Beard/Macros.h>
+#include <beard/core/macros.h>
 
-namespace Beard
+namespace beard
 {
-class Timer
+class timer
 {
 public:
-	Timer();
+	timer();
 
 	// Get the time since the last call to Tick() or since the start if called
 	// for the first time
-	f64 Tick();
+	f64 tick();
 
 	// Set the start time to the current time
-	void Restart();
+	void restart();
 
 	// Get the time elapsed between the two last calls to Tick()
-	f64 DeltaTime() const;
-	u64 DeltaTimeNanoseconds() const;
-	u64 DeltaTimeMicroseconds() const;
-	u64 DeltaTimeMilliseconds() const;
+	f64 delta_time() const;
+	u64 delta_time_ns() const;
+	u64 delta_time_us() const;
+	u64 delta_time_ms() const;
 
 	// Get the time since the timer started (or since the last call to
 	// Restart()). Who could have guessed ?
-	f64 TimeSinceStart() const;
+	f64 time_since_start() const;
 
 private:
-	u64 m_StartTime    = 0;
-	u64 m_LastTick     = 0;
-	u64 m_PreviousTick = 0;
+	u64 m_start_time    = 0;
+	u64 m_last_tick     = 0;
+	u64 m_previous_tick = 0;
 };
 }
