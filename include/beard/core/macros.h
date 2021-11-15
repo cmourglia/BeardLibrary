@@ -213,3 +213,5 @@ PrivDefer<Fn> DeferFunc(Fn fn) { return PrivDefer<Fn>(fn); }
 #define DEFER_3(x) DEFER_2(x, __COUNTER__)
 #define defer(code) auto DEFER_3(_defer_) = Priv::DeferFunc([&]() { code; })
 // clang-format on
+
+#define TODO throw std::exception("TODO")
