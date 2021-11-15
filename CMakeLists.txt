@@ -23,19 +23,20 @@ add_library(${PROJECT_NAME} STATIC
         include/beard/containers/hash_map.h
         include/beard/io/io.h
         include/beard/misc/timer.h
-)
+        include/beard/misc/optional.h)
 
 target_include_directories(${PROJECT_NAME} PUBLIC include)
 target_compile_definitions(${PROJECT_NAME} PRIVATE
-    $<$<CXX_COMPILER_ID:MSVC>:_CRT_SECURE_NO_WARNINGS>
-    $<$<CXX_COMPILER_ID:MSVC>:NOMINMAX>
-)
+        $<$<CXX_COMPILER_ID:MSVC>:_CRT_SECURE_NO_WARNINGS>
+        $<$<CXX_COMPILER_ID:MSVC>:NOMINMAX>
+        $<$<CXX_COMPILER_ID:MSVC>:_SILENCE_CXX17_CODECVT_HEADER_DEPRECATION_WARNING=1>
+        )
 
-if(BEARD_BUILD_TESTS)
+if (BEARD_BUILD_TESTS)
     enable_testing()
 
     add_executable(TestCompile tests/TestCompile.cpp)
     target_link_libraries(TestCompile PRIVATE ${PROJECT_NAME})
 
     add_test(NAME TestCompile COMMAND TestCompile)
-endif()
+endif ()
