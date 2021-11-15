@@ -1,5 +1,9 @@
 #include <beard/io/io.h>
 
+#include <beard/core/macros.h>
+
+#include <codecvt>
+
 #if BEARD_PLATFORM_WINDOWS
 START_EXTERNAL_INCLUDE
 #	include <Windows.h>
@@ -55,7 +59,7 @@ std::string read_whole_file(const char* filename)
 #if BEARD_PLATFORM_WINDOWS
 	HANDLE fileHandle = CreateFileA(filename,
 	                                GENERIC_READ,
-	                                FILE_SHARE_READ | FILE_SHARE_WRITE,
+	                                FILE_SHARE_READ,
 	                                nullptr,
 	                                OPEN_EXISTING,
 	                                FILE_ATTRIBUTE_NORMAL,
@@ -95,9 +99,9 @@ std::string read_whole_file(const char* filename)
 	return result;
 }
 
-std::optional<std::string> read_while_file_if_newer(const char* filename, i64 lastWrite, i64* newLastWrite)
+beard::optional<std::string> read_while_file_if_newer(const char* filename, i64 lastWrite, i64* newLastWrite)
 {
-	std::optional<std::string> result;
+	beard::optional<std::string> result;
 
 #if BEARD_PLATFORM_WINDOWS
 	HANDLE fileHandle = CreateFileA(filename,
@@ -171,5 +175,21 @@ std::optional<std::string> read_while_file_if_newer(const char* filename, i64 la
 #endif
 
 	return result;
+}
+
+std::u32string to_utf8(const std::string& str)
+{
+	std::wstring_convert<std::codecvt_utf8<i32>, i32> converter;
+
+	auto asInt = converter.from_bytes(str);
+	return std::u32string(reinterpret_cast<char32_t const*>(asInt.data()), asInt.length());
+}
+
+std::string from_utf8(const std::u32string& str)
+{
+	std::wstring_convert<std::codecvt_utf8<char32_t>, char32_t> converter;
+
+	auto asChar = converter.to_bytes(str);
+	return std::string(reinterpret_cast<char const*>(asChar.data(), asChar.length());
 }
 }
