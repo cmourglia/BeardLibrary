@@ -1,52 +1,48 @@
 #pragma once
 
 #include <beard/core/macros.h>
-
-#include <glm/glm.hpp>
-
 #include <math.h>
-#include <numbers>
 #include <stdio.h>
 
-namespace beard
-{
+#include <glm/glm.hpp>
+#include <numbers>
+
+namespace beard {
 
 // Math stuff
-namespace float32
-{
-	constexpr f32 Pi   = std::numbers::pi_v<f32>;
-	constexpr f32 Pi_2 = Pi * 0.5f;
-	constexpr f32 Pi_3 = Pi / 3.0f;
-	constexpr f32 Pi_4 = Pi / 4.0f;
-	constexpr f32 Pi_6 = Pi / 6.0f;
-	constexpr f32 Pi_8 = Pi / 8.0f;
-	constexpr f32 Tau  = Pi * 2.0f;
+namespace float32 {
+constexpr f32 Pi = std::numbers::pi_v<f32>;
+constexpr f32 Pi_2 = Pi * 0.5f;
+constexpr f32 Pi_3 = Pi / 3.0f;
+constexpr f32 Pi_4 = Pi / 4.0f;
+constexpr f32 Pi_6 = Pi / 6.0f;
+constexpr f32 Pi_8 = Pi / 8.0f;
+constexpr f32 Tau = Pi * 2.0f;
 
-	constexpr f32 DegToRad = Pi / 180.0f;
-	constexpr f32 RadToDeg = 180.0f / Pi;
+constexpr f32 DegToRad = Pi / 180.0f;
+constexpr f32 RadToDeg = 180.0f / Pi;
 
-	constexpr f32 Sqrt_2 = std::numbers::sqrt2_v<f32>;
-	constexpr f32 E      = std::numbers::e_v<f32>;
-	constexpr f32 Phi    = std::numbers::phi_v<f32>;
-}
+constexpr f32 Sqrt_2 = std::numbers::sqrt2_v<f32>;
+constexpr f32 E = std::numbers::e_v<f32>;
+constexpr f32 Phi = std::numbers::phi_v<f32>;
+}  // namespace float32
 
-namespace float64
-{
-	constexpr f64 Pi   = std::numbers::pi_v<f64>;
-	constexpr f64 Pi_2 = Pi * 0.5;
-	constexpr f64 Pi_3 = Pi / 3.0;
-	constexpr f64 Pi_4 = Pi / 4.0;
-	constexpr f64 Pi_6 = Pi / 6.0;
-	constexpr f64 Pi_8 = Pi / 8.0;
-	constexpr f64 Tau  = Pi * 2.0;
+namespace float64 {
+constexpr f64 Pi = std::numbers::pi_v<f64>;
+constexpr f64 Pi_2 = Pi * 0.5;
+constexpr f64 Pi_3 = Pi / 3.0;
+constexpr f64 Pi_4 = Pi / 4.0;
+constexpr f64 Pi_6 = Pi / 6.0;
+constexpr f64 Pi_8 = Pi / 8.0;
+constexpr f64 Tau = Pi * 2.0;
 
-	constexpr f64 DegToRad = Pi / 180.0;
-	constexpr f64 RadToDeg = 180.0 / Pi;
+constexpr f64 DegToRad = Pi / 180.0;
+constexpr f64 RadToDeg = 180.0 / Pi;
 
-	constexpr f64 Sqrt_2 = std::numbers::sqrt2_v<f64>;
-	constexpr f64 E      = std::numbers::e_v<f64>;
-	constexpr f64 Phi    = std::numbers::phi_v<f64>;
-}
+constexpr f64 Sqrt_2 = std::numbers::sqrt2_v<f64>;
+constexpr f64 E = std::numbers::e_v<f64>;
+constexpr f64 Phi = std::numbers::phi_v<f64>;
+}  // namespace float64
 
 // Alias Math with F32 of F64 depending on the Real type
 #if defined(USE_DOUBLE)
@@ -55,15 +51,14 @@ namespace Math = F64;
 namespace math = float32;
 #endif
 
-namespace vec3
-{
-	static constexpr glm::vec3 UP    = {0.0f, 1.0f, 0.0f};
-	static constexpr glm::vec3 DOWN  = {0.0f, -1.0f, 0.0f};
-	static constexpr glm::vec3 FRONT = {0.0f, 0.0f, 1.0f};
-	static constexpr glm::vec3 BACK  = {0.0f, 0.0f, -1.0f};
-	static constexpr glm::vec3 RIGHT = {1.0f, 0.0f, 0.0f};
-	static constexpr glm::vec3 LEFT  = {-1.0f, 0.0f, 0.0f};
-}
+namespace vec3 {
+static constexpr glm::vec3 UP = {0.0f, 1.0f, 0.0f};
+static constexpr glm::vec3 DOWN = {0.0f, -1.0f, 0.0f};
+static constexpr glm::vec3 FRONT = {0.0f, 0.0f, 1.0f};
+static constexpr glm::vec3 BACK = {0.0f, 0.0f, -1.0f};
+static constexpr glm::vec3 RIGHT = {1.0f, 0.0f, 0.0f};
+static constexpr glm::vec3 LEFT = {-1.0f, 0.0f, 0.0f};
+}  // namespace vec3
 
 // clang-format off
 template <typename T> inline T min(const T a, const T b) { return a < b ? a : b; }
@@ -100,4 +95,4 @@ inline f64 to_radians(const f64 x) { return x * float64::DegToRad; }
 inline f64 to_degrees(const f64 x) { return x * float64::RadToDeg; }
 // clang-format on
 
-} // namespace beard
+}  // namespace beard
