@@ -108,23 +108,45 @@ using real = f64;
 using real = f32;
 #endif
 
-static constexpr usize KB = 1024;
-static constexpr usize MB = 1024 * KB;
-static constexpr usize GB = 1024 * MB;
+template <typename T>
+inline constexpr T KB(T x) {
+  return T{1024} * x;
+}
 
-static constexpr usize KiB = 1000;
-static constexpr usize MiB = 1000 * KiB;
-static constexpr usize GiB = 1000 * MiB;
+template <typename T>
+inline constexpr T MB(T x) {
+  return T{1024} * KB(x);
+}
 
-// clang-format off
-inline constexpr usize operator"" _KB(usize size) { return size * KB; }
-inline constexpr usize operator"" _MB(usize size) { return size * MB; }
-inline constexpr usize operator"" _GB(usize size) { return size * GB; }
+template <typename T>
+inline constexpr T GB(T x) {
+  return T{1024} * MB(x);
+}
 
-inline constexpr usize operator"" _KiB(usize size) { return size * KiB; }
-inline constexpr usize operator"" _MiB(usize size) { return size * MiB; }
-inline constexpr usize operator"" _GiB(usize size) { return size * GiB; }
-// clang-format on
+template <typename T>
+inline constexpr T TB(T x) {
+  return T{1024} * GB(x);
+}
+
+template <typename T>
+inline constexpr T KiB(T x) {
+  return T{1000} * x;
+}
+
+template <typename T>
+inline constexpr T MiB(T x) {
+  return T{1000} * KiB(x);
+}
+
+template <typename T>
+inline constexpr T GiB(T x) {
+  return T{1000} * MiB(x);
+}
+
+template <typename T>
+inline constexpr T TiB(T x) {
+  return T{1000} * GiB(x);
+}
 
 #define UNUSED(x) (void)(x)
 
