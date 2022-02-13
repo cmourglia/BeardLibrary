@@ -2,15 +2,22 @@ project(beardLibrary)
 cmake_minimum_required(VERSION 3.20)
 
 option(BEARD_BUILD_TESTS "Build tests" ON)
+option(BEARD_ENABLE_GLM "Enable GLM" OFF)
+option(BEARD_ENABLE_STB "Enable STB" OFF)
 
 set(CMAKE_CXX_STANDARD 20)
 
+if (ENABLE_GLM)
 add_subdirectory(thirdparty/glm)
+endif ()
+
+if (ENABLE_STB)
 add_library(stb_image STATIC thirdparty/stb_units/stb_image.c)
 target_include_directories(stb_image PUBLIC thirdparty/stb)
 target_compile_definitions(stb_image PRIVATE $<$<CXX_COMPILER_ID:MSVC>:_CRT_SECURE_NO_WARNINGS>)
 add_library(stb_truetype STATIC thirdparty/stb_units/stb_truetype.c)
 target_include_directories(stb_truetype PUBLIC thirdparty/stb)
+endif ()
 
 set(FETCHCONTENT_QUIET OFF CACHE BOOL "" FORCE)
 include(FetchContent)
