@@ -12,6 +12,18 @@ target_compile_definitions(stb_image PRIVATE $<$<CXX_COMPILER_ID:MSVC>:_CRT_SECU
 add_library(stb_truetype STATIC thirdparty/stb_units/stb_truetype.c)
 target_include_directories(stb_truetype PUBLIC thirdparty/stb)
 
+set(FETCHCONTENT_QUIET OFF CACHE BOOL "" FORCE)
+include(FetchContent)
+FetchContent_Declare(
+        fmt
+        GIT_REPOSITORY https://github.com/fmtlib/fmt.git
+        GIT_TAG 8.1.1
+)
+
+FetchContent_MakeAvailable(fmt)
+
+add_subdirectory(thirdparty/loguru)
+
 add_library(${PROJECT_NAME} STATIC
         src/timer.cpp
         src/io.cpp
@@ -32,6 +44,7 @@ target_compile_definitions(${PROJECT_NAME} PRIVATE
         $<$<CXX_COMPILER_ID:MSVC>:_SILENCE_CXX17_CODECVT_HEADER_DEPRECATION_WARNING=1>
         )
 
+target_link_libraries(${PROJECT_NAME} PUBLIC loguru fmt)
 if (BEARD_BUILD_TESTS)
     enable_testing()
 
