@@ -43,6 +43,8 @@ public:
 		return *this;
 	}
 
+  T operator*() const { return m_value; }
+
 	[[nodiscard]] bool has_value() const { return m_has_value; }
 
 	[[nodiscard]] const T& value() const { return m_value; }
