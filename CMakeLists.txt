@@ -7,11 +7,11 @@ option(BEARD_ENABLE_STB "Enable STB" OFF)
 
 set(CMAKE_CXX_STANDARD 20)
 
-if (ENABLE_GLM)
+if (BEARD_ENABLE_GLM)
     add_subdirectory(thirdparty/glm)
 endif ()
 
-if (ENABLE_STB)
+if (BEARD_ENABLE_STB)
     add_library(stb_image STATIC thirdparty/stb_units/stb_image.c)
     target_include_directories(stb_image PUBLIC thirdparty/stb)
     target_compile_definitions(stb_image PRIVATE $<$<CXX_COMPILER_ID:MSVC>:_CRT_SECURE_NO_WARNINGS>)
