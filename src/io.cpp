@@ -28,7 +28,7 @@ std::string read_whole_file(const char* filename) {
   result.resize(length);
 
   auto read_len = fread(result.data(), sizeof(char), length, file);
-  ASSERT(read_len == length);
+  ASSERT(read_len == length, "Read less bytes than the length of the file");
   UNUSED(read_len);
 
   return result;
@@ -49,17 +49,17 @@ beard::optional<std::string> read_whole_file_if_newer(const char* filename,
   return result;
 }
 
-std::u32string to_utf8(const std::string& str) {
-  std::wstring_convert<std::codecvt_utf8<i32>, i32> converter;
-
-  auto as_int = converter.from_bytes(str);
-  return {reinterpret_cast<char32_t const*>(as_int.data()), as_int.length()};
-}
-
-std::string from_utf8(const std::u32string& str) {
-  std::wstring_convert<std::codecvt_utf8<char32_t>, char32_t> converter;
-
-  auto as_char = converter.to_bytes(str);
-  return {reinterpret_cast<char const*>(as_char.data(), as_char.length())};
-}
+// std::u32string to_utf8(const std::string& str) {
+//   std::wstring_convert<std::codecvt_utf8<i32>, i32> converter;
+//
+//   auto as_int = converter.from_bytes(str);
+//   return {reinterpret_cast<char32_t const*>(as_int.data()), as_int.length()};
+// }
+//
+// std::string from_utf8(const std::u32string& str) {
+//   std::wstring_convert<std::codecvt_utf8<char32_t>, char32_t> converter;
+//
+//   auto as_char = converter.to_bytes(str);
+//   return {reinterpret_cast<char const*>(as_char.data(), as_char.length())};
+// }
 }  // namespace beard::io
