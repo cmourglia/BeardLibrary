@@ -27,7 +27,9 @@ std::string read_whole_file(const char* filename) {
   std::string result;
   result.resize(length);
 
-  fread(result.data(), sizeof(char), length, file);
+  auto read_len = fread(result.data(), sizeof(char), length, file);
+  ASSERT(read_len == length);
+  UNUSED(read_len);
 
   return result;
 }
