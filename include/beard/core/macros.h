@@ -214,7 +214,7 @@ inline constexpr T TiB(T x) {
 
 #define ASSERT_UNREACHABLE() ASSERT(false, "Unreachable path")
 #else
-#define ASSERT(x) NOOP(x)
+#define ASSERT(x, ...) NOOP(x)
 #define ASSERT_UNREACHABLE() NOOP()
 #endif
 
