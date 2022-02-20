@@ -55,6 +55,13 @@ target_compile_definitions(${PROJECT_NAME} PRIVATE
 
 target_link_libraries(${PROJECT_NAME} PUBLIC loguru fmt)
 
+if (BEARD_ENABLE_GLM)
+        target_link_libraries(${PROJECT_NAME} PUBLIC glm::glm)
+        target_compile_definitions(${PROJECT_NAME} PUBLIC BEARD_HAS_GLM=1)
+else ()
+        target_compile_definitions(${PROJECT_NAME} PUBLIC BEARD_HAS_GLM=0)
+endif ()
+
 if (BEARD_BUILD_TESTS)
     FetchContent_Declare(
             Catch2

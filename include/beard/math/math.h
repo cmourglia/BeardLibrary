@@ -4,7 +4,10 @@
 #include <math.h>
 #include <stdio.h>
 
+#if BEARD_HAS_GLM
 #include <glm/glm.hpp>
+#endif
+
 #include <numbers>
 
 namespace beard {
@@ -51,6 +54,7 @@ namespace Math = F64;
 namespace math = float32;
 #endif
 
+#if BEARD_HAS_GLM
 namespace vec3 {
 static constexpr glm::vec3 UP = {0.0f, 1.0f, 0.0f};
 static constexpr glm::vec3 DOWN = {0.0f, -1.0f, 0.0f};
@@ -59,6 +63,7 @@ static constexpr glm::vec3 BACK = {0.0f, 0.0f, -1.0f};
 static constexpr glm::vec3 RIGHT = {1.0f, 0.0f, 0.0f};
 static constexpr glm::vec3 LEFT = {-1.0f, 0.0f, 0.0f};
 }  // namespace vec3
+#endif
 
 // clang-format off
 template <typename T> inline T min(const T a, const T b) { return a < b ? a : b; }
