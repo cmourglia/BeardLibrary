@@ -1,8 +1,9 @@
 #pragma once
 
-#include <beard/core/macros.h>
-#include <math.h>
-#include <stdio.h>
+#include <cmath>
+#include <cstdio>
+
+#include "beard/core/macros.h"
 
 #if BEARD_HAS_GLM
 #include <glm/glm.hpp>
