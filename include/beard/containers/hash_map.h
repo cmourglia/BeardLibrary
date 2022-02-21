@@ -1,10 +1,10 @@
 #pragma once
 
-#include <beard/core/macros.h>
-
 #include <initializer_list>
 #include <string>
 #include <unordered_map>
+
+#include "beard/core/macros.h"
 
 namespace beard {
 // For now this is just a wrapper around std::unorederd_map, with convenience

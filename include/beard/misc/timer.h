@@ -1,6 +1,6 @@
 #pragma once
 
-#include <beard/core/macros.h>
+#include "beard/core/macros.h"
 
 namespace beard {
 class timer {

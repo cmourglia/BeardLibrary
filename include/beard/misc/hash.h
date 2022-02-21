@@ -1,9 +1,8 @@
 #pragma once
 
-#include <beard/core/macros.h>
-
-// TODO: Remove dependency to STL
 #include <string_view>
+
+#include "beard/core/macros.h"
 
 namespace beard::crc32 {
 static constexpr u32 CRC_TABLE[256] = {

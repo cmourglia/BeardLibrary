@@ -1,9 +1,9 @@
 #pragma once
 
-#include <beard/core/macros.h>
-
 #include <initializer_list>
 #include <unordered_set>
+
+#include "beard/core/macros.h"
 
 namespace beard {
 // For now this is just a wrapper around std::unorederd_map, with convenience

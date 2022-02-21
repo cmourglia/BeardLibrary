@@ -41,7 +41,7 @@
 #error "Undefined platform"
 #endif
 
-#include <stdint.h>
+#include <cstdint>
 #if UINTPTR_MAX == 0xffffffffffffffff
 #define BEARD_ARCH64
 #elif UINTPTR_MAX == 0xffffffff

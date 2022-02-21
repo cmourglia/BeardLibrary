@@ -1,8 +1,8 @@
 #pragma once
 
-#include <beard/core/macros.h>
-
 #include <vector>
+
+#include "beard/core/macros.h"
 
 namespace beard {
 
