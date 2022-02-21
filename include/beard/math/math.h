@@ -1,12 +1,9 @@
 #pragma once
 
-#include "beard/core/macros.h"
-
-#if BEARD_COMPILER_MSVC
-#define _USE_MATH_DEFINES
-#endif
 #include <cmath>
 #include <cstdio>
+
+#include "beard/core/macros.h"
 
 #if BEARD_HAS_GLM
 #include <glm/glm.hpp>
@@ -15,24 +12,8 @@
 namespace beard {
 
 // Math stuff
-namespace float32 {
-constexpr f32 Pi = static_cast<f32>(M_PI);
-constexpr f32 Pi_2 = Pi * 0.5f;
-constexpr f32 Pi_3 = Pi / 3.0f;
-constexpr f32 Pi_4 = Pi / 4.0f;
-constexpr f32 Pi_6 = Pi / 6.0f;
-constexpr f32 Pi_8 = Pi / 8.0f;
-constexpr f32 Tau = Pi * 2.0f;
-
-constexpr f32 DegToRad = Pi / 180.0f;
-constexpr f32 RadToDeg = 180.0f / Pi;
-
-constexpr f32 Sqrt_2 = static_cast<f32>(M_SQRT2);
-constexpr f32 E = static_cast<f32>(M_E);
-}  // namespace float32
-
 namespace float64 {
-constexpr f64 Pi = M_PI;
+constexpr f64 Pi = 3.14159265358979323846;
 constexpr f64 Pi_2 = Pi * 0.5;
 constexpr f64 Pi_3 = Pi / 3.0;
 constexpr f64 Pi_4 = Pi / 4.0;
@@ -43,9 +24,25 @@ constexpr f64 Tau = Pi * 2.0;
 constexpr f64 DegToRad = Pi / 180.0;
 constexpr f64 RadToDeg = 180.0 / Pi;
 
-constexpr f64 Sqrt_2 = M_SQRT2;
-constexpr f64 E = M_E;
+constexpr f64 Sqrt_2 = 1.41421356237309504880;
+constexpr f64 E = 2.71828182845904523536;
 }  // namespace float64
+
+namespace float32 {
+constexpr f32 Pi = static_cast<f32>(float64::Pi);
+constexpr f32 Pi_2 = Pi * 0.5f;
+constexpr f32 Pi_3 = Pi / 3.0f;
+constexpr f32 Pi_4 = Pi / 4.0f;
+constexpr f32 Pi_6 = Pi / 6.0f;
+constexpr f32 Pi_8 = Pi / 8.0f;
+constexpr f32 Tau = Pi * 2.0f;
+
+constexpr f32 DegToRad = Pi / 180.0f;
+constexpr f32 RadToDeg = 180.0f / Pi;
+
+constexpr f32 Sqrt_2 = static_cast<f32>(float64::Sqrt_2);
+constexpr f32 E = static_cast<f32>(float64::E);
+}  // namespace float32
 
 // Alias Math with F32 of F64 depending on the Real type
 #if defined(USE_DOUBLE)
