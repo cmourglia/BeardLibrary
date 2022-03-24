@@ -21,7 +21,7 @@ std::string read_whole_file(std::string_view filename) {
 
   defer(fclose(file));
 
-  fseek(file, SEEK_END, SEEK_SET);
+  fseek(file, SEEK_SET, SEEK_END);
   auto length = ftell(file);
   rewind(file);
 
