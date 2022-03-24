@@ -22,6 +22,10 @@ std::vector<std::string_view> tokenize(std::string_view input,
     curr_str = curr_str.substr(offset + 1);
   }
 
+  if (!curr_str.empty()) {
+    result.push_back(curr_str);
+  }
+
   return result;
 }
 
