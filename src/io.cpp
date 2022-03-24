@@ -7,14 +7,14 @@
 #include "beard/core/macros.h"
 
 namespace beard::io {
-i64 file_write_time(const char* filename) {
+i64 file_write_time(std::string_view filename) {
   namespace fs = std::filesystem;
   auto write_time = fs::last_write_time(fs::path{filename});
   return write_time.time_since_epoch().count();
 }
 
-std::string read_whole_file(const char* filename) {
-  FILE* file = fopen(filename, "rb");
+std::string read_whole_file(std::string_view filename) {
+  FILE* file = fopen(filename.data(), "rb");
   if (file == nullptr) {
     return "";
   }
@@ -35,7 +35,7 @@ std::string read_whole_file(const char* filename) {
   return result;
 }
 
-beard::optional<std::string> read_whole_file_if_newer(const char* filename,
+beard::optional<std::string> read_whole_file_if_newer(std::string_view filename,
                                                       i64 last_write,
                                                       i64* new_last_write) {
   beard::optional<std::string> result;
